@@ -41,11 +41,12 @@ class PoeToolBackendApplicationTests {
 
     @Test
     void shouldSaveSampleEntity(@Autowired final SampleReactiveRepository repository) {
-        String SAMPLE_NAME = "tywin";
+        String SAMPLE_NAME = "lannister";
+        double SAMPLE_VALUE = 17.2;
         SampleEntity sampleEntity = SampleEntity.builder()
                 .owner(SAMPLE_NAME)
                 .id(null)
-                .value(12.3)
+                .value(SAMPLE_VALUE)
                 .build();
 
         Publisher<SampleEntity> setup = repository.deleteAll().then(repository.save(sampleEntity));
@@ -57,9 +58,8 @@ class PoeToolBackendApplicationTests {
                 .create(composite)
                 .consumeNextWith(sample -> {
                     assertThat(sample.getId()).isNotNull();
-                    assertThat(sample.getValue()).isEqualTo(12.3);
+                    assertThat(sample.getValue()).isEqualTo(SAMPLE_VALUE);
                     assertThat(sample.getOwner()).isEqualTo(SAMPLE_NAME);
                 }).verifyComplete();
-
     }
 }

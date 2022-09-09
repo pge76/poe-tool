@@ -24,7 +24,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring27x:1.1.1'
 
     compileOnly 'org.projectlombok:lombok'
 
