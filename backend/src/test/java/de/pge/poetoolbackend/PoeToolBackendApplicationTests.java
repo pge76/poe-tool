@@ -62,4 +62,18 @@ class PoeToolBackendApplicationTests {
                     assertThat(sample.getOwner()).isEqualTo(SAMPLE_NAME);
                 }).verifyComplete();
     }
+
+    @Test
+    void shouldFindNothing(@Autowired final SampleReactiveRepository repository) {
+        String SAMPLE_NAME = "not_saved_name";
+        Mono<Void> setup = repository.deleteAll();
+        Mono<SampleEntity> find = repository.findAllByOwner(SAMPLE_NAME);
+
+        Publisher<SampleEntity> composite = Mono
+                .from(setup)
+                .then(find);
+        StepVerifier
+                .create(composite).expectNextCount(0).verifyComplete();
+    }
+
 }
