@@ -7,7 +7,7 @@ und Konzepte zu erlernen.
 - React
 - Kubernetes
 - Github Pipelines
-- Gradle
+- ~~Gradle~~ // because fuck gradle
 - MapStruct
 
 ## Links
