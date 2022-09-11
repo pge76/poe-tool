@@ -1,4 +1,4 @@
-package de.pge.poetoolbackend;
+package de.pge.poetool.backend.sample;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
