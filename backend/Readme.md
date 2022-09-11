@@ -85,3 +85,30 @@ und Konzepte zu erlernen.
 
     - Ist ein Publisher
     - repräsentiert 0 bis 1 Element
+
+# Fun Facts
+
+## Fun Fact 1
+
+Wenn man einen FunktionalInterface hat, das einen Parameter vorsieht für den Funktionsaufruf,
+
+    @FunctionalInterface
+    public interface SampleFunction<T extends Object> {
+      Result handle(Object request); // Parameter Object
+    }
+
+man diesen aber in der eigentlichen Methode nicht benötigt
+
+    callFunctionalInterface(SomeObject::doIt)
+    ...
+    public Result doIt(Object request) {
+      return new Result();  // <- Parameter request nicht benutzt
+    }
+
+Dann meckert Sonar/IntelliJ an, das der Parameter überflüssig ist, da der Zusammenhang zum
+Functional Interface nicht hergestellt wird.
+Das kann man umgehen, indem man den Parameter mit dem Suffix "ignored" versieht.
+
+    public Result doIt(Object ignoredRequest) // <- valide
+
+}
